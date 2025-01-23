@@ -8,6 +8,7 @@ async function bootstrap() {
     origin: "*", // Allowed origins
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   });
+  app.setGlobalPrefix("/test")
   app.useGlobalPipes(new ValidationPipe());
   //Документация 
   const config = new DocumentBuilder()
@@ -16,6 +17,6 @@ async function bootstrap() {
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
-  await app.listen(3001);
+  await app.listen(3002);
 }
 bootstrap();
